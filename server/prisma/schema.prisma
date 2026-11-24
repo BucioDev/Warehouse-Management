@@ -1,0 +1,106 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Products {
+  id     String   @id
+  name   String
+  price  Float
+  stock  Int
+  Entrys Entrys[]
+  Exits  Exits[]
+  Sales  Sales[]
+}
+
+model Sales {
+  id          String   @id @default(uuid())
+  productId   String
+  quantity    Int
+  unitPrice   Float
+  totalAmount Float
+  product     Products @relation(fields: [productId], references: [id])
+
+  CreatedAt DateTime @default(now())
+}
+
+model Entrys {
+  id        String   @id @default(uuid())
+  productId String
+  quantity  Int
+  buyPrice  Float
+  totalPrice Float
+  product   Products @relation(fields: [productId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Exits {
+  id        String   @id @default(uuid())
+  productId String
+  quantity  Int
+  product   Products @relation(fields: [productId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Expenses {
+  id     String @id @default(uuid())
+  category String
+  amount Float
+
+  createdAt DateTime @default(now())
+}
+
+model Credits {
+  id            String @id @default(uuid())
+  name          String
+  totalDebt     Float
+  debtPaid      Float  @default(0)
+  remainingDebt Float
+  periods       Int
+
+  Installments Instalments[]
+}
+
+model Instalments {
+  id        String   @id @default(uuid())
+  creditId  String
+  amount    Float
+  createdAt DateTime @default(now())
+
+  credit Credits @relation(fields: [creditId], references: [id])
+}
+
+model SalesSummary {
+  id               String   @id @default(uuid())
+  totalValue       Float
+  changePercentage Float?
+  createdAt        DateTime @default(now())
+}
+
+model ExpensesSummary {
+  id               String @id @default(uuid())
+  totalExpense     Float
+  ExpenseByCategory ExpenseByCategory[]
+
+  createdAt DateTime @default(now())
+}
+
+model ExpenseByCategory {
+  expenseByCategoryId String         @id @default(uuid())
+  expenseSummaryId    String
+  category            String
+  amount              Float
+  date                DateTime
+  expenseSummary      ExpensesSummary @relation(fields: [expenseSummaryId], references: [id])
+}
