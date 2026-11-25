@@ -7,6 +7,7 @@ module.exports = {
         env:{
         NODE_ENV:"development",
         ENV_VAR1:"enviroment-variable",
+        NODE_EXTRA_CA_CERTS: "/etc/ssl/certs/rds/global-bundle.pem",
         }
     }
     ]

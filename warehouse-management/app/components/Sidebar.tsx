@@ -82,7 +82,7 @@ export default function Sidebar(){
             </div>
 
             <div className={`${isSidebarCollapsed ? "hidden" : "block"} mb-10`}>
-                <p className="text-center text-sm text-gray-500">&cpoy; 2026 Fruseva </p>
+                <p className="text-center text-sm text-gray-500">&copy; 2026 Fruseva </p>
             </div>
         </div>
     )
