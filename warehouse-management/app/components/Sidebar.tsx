@@ -49,13 +49,18 @@ export default function Sidebar(){
 
     return (
         <div className={sidebarClassNames}>
-            <div className={`flex gap-3 justify-between md:justify-normal items-center pt-8 ${isSidebarCollapsed ? "px-5v" : "px-8"}`}>
+            <div className={`flex flex-col gap-3 items-center pt-8 ${isSidebarCollapsed ? "px-5" : "px-8"}`}>
                 <Image src="https://s3-warehouse-management-607063196079-us-east-2-an.s3.us-east-2.amazonaws.com/fruseva+logo.jpeg"
-                alt="Logo" width={50} height={50} className="rounded-full h-full object-cover"/>
-                <h1 className={`${isSidebarCollapsed ? "hidden" : "block"} font-extrabold text-2xl`}>🌱 Fruseva 🍌</h1>
-            
-                <button className="md:hidden px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100"
-                onClick={toogleSidebar}>
+                    alt="logo" width={500} height={500}
+                    className={`${isSidebarCollapsed ? "hidden" : "w-[90%]"} h-auto object-contain`}/>
+
+                <h1 className={`${isSidebarCollapsed ? "hidden" : "block"} font-extrabold text-2xl`}>
+                    🌱 Fruseva 🍌
+                </h1>
+
+                <button
+                    className="md:hidden px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100"
+                    onClick={toogleSidebar}>
                     <Menu className="w-4 h-4"/>
                 </button>
             </div>
