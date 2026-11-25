@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../redux";
 import { setIsSidebarCollapsed } from "@/state";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 interface SidebarLinkProps {
     href: string;
@@ -49,7 +50,8 @@ export default function Sidebar(){
     return (
         <div className={sidebarClassNames}>
             <div className={`flex gap-3 justify-between md:justify-normal items-center pt-8 ${isSidebarCollapsed ? "px-5v" : "px-8"}`}>
-                <div>Logo</div>
+                <Image src="https://s3-warehouse-management-607063196079-us-east-2-an.s3.us-east-2.amazonaws.com/fruseva+logo.jpeg"
+                alt="Logo" width={50} height={50} className="rounded-full h-full object-cover"/>
                 <h1 className={`${isSidebarCollapsed ? "hidden" : "block"} font-extrabold text-2xl`}>🌱 Fruseva 🍌</h1>
             
                 <button className="md:hidden px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100"
