@@ -1,5 +1,8 @@
 export interface SalesSummary {
     id: string;
+    period: "WEEKLY" | "MONTHLY";
+    startDate: string;
+    endDate: string;
     totalValue: number;
     changePercentage?: number;
     createdAt: string;
@@ -7,15 +10,19 @@ export interface SalesSummary {
 
 export interface ExpenseSummary {
     id: string;
-    totalValue: number;
+    period: "WEEKLY" | "MONTHLY";
+    startDate: string;
+    endDate: string;
+    totalExpense: number;
+    expenseByCategory: ExpenseByCategorySummary[];
     createdAt: string;
 }
 
 export interface ExpenseByCategorySummary {
     expenseByCategorySummaryId: string;
+    expenseSummaryId:    string;
     category: string;
     amount: string;
-    date: string;
 }
 
 

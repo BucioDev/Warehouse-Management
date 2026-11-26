@@ -27,10 +27,10 @@ export default function GroupedExits(){
                 <div>Cargando... </div>
             ) : (
                 groupedExits?.map((exit) => (
-                    <div key={exit.productId }className="border shadow rounded-md p-4 max-w-full w-full mx-auto">
+                    <div key={exit.productId }className="border shadow bg-[#D8DBE2] rounded-md p-4 max-w-full w-full mx-auto">
                         <div className="flex flex-col items-center">
-                            <h3 className="text-lg text-gray-900 font-semibold">{exit.product?.name}</h3>
-                            <div className="text-sm text-gray-600 mt-1">
+                            <h3 className="text-xl text-gray-900 font-bold">{exit.product?.name}</h3>
+                            <div className="text-lg text-gray-800 font-medium mt-1">
                                 Cantidad total Recibida: {exit._sum.quantity}
                             </div>
                         </div>

@@ -27,14 +27,14 @@ export default function GroupedSales(){
                 <div>Cargando... </div>
             ) : (
                 groupedSales?.map((sale) => (
-                    <div key={sale.productId }className="border shadow rounded-md p-4 max-w-full w-full mx-auto">
+                    <div key={sale.productId }className="border shadow bg-[#D8DBE2] rounded-md p-4 max-w-full w-full mx-auto">
                         <div className="flex flex-col items-center">
-                            <h3 className="text-lg text-gray-900 font-semibold">{sale.product?.name}</h3>
-                            <p className="text-gray-800">Precio Medio:{sale._avg.unitPrice}</p>
-                            <div className="text-sm text-gray-600 mt-1">
+                            <h3 className="text-xl text-gray-900 font-bold">{sale.product?.name}</h3>
+                            <p className="text-lg text-gray-800 font-medium">Precio Medio:{sale._avg.unitPrice}</p>
+                            <div className="text-lg text-gray-800 font-medium mt-1">
                                 Cantidad total Vendida: {sale._sum.quantity}
                             </div>
-                            <div className="text-sm text-gray-600 mt-1">
+                            <div className="text-lg text-gray-800 font-medium mt-1">
                                 Ganancia total: {sale._sum.totalAmount}
                             </div>
                         </div>

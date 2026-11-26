@@ -67,7 +67,16 @@ export default function InventoryPage(){
             columns={columns}
             getRowId={(row) => row.id}
             className="bg-white shadow rounded-lg border border-gray-200 mt-5 !text-gray-700"
-        />
+            sx={{
+                fontSize: "1rem",
+                "& .MuiDataGrid-columnHeaderTitle": {
+                    fontSize: "1rem",
+                    fontWeight: 600,
+                },
+                "& .MuiDataGrid-cell": {
+                    fontSize: "1rem",
+                },
+            }}/>
         <CreateProductModalForm  isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onCreate={handleCreateProduct}/>

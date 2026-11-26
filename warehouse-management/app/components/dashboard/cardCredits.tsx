@@ -29,7 +29,7 @@ export default function CardCredits() {
     const { data: dashboardMetrics, isLoading } = useGetDashboardMetricsQuery();
 
     return (
-        <div className="row-span-3 xl:row-span-6 bg-white shadow-md rounded-2xl pb-16">
+        <div className="row-span-3 xl:row-span-6 bg-[#D8DBE2] shadow-md rounded-2xl pb-16">
             {isLoading ? (
                 <div className="mt-5">Cargando ...</div>
             ) : (
@@ -37,7 +37,7 @@ export default function CardCredits() {
                     <h3 className="text-lg font-semibold px-7 pt-5 pb-2">Creditos</h3>
                     <hr />
                     <div className="overflow-auto h-full">
-                        <Table>
+                        <Table className="text-xl">
                             <TableHeader>
                                 <TableRow>
                                     <TableHead>Nombre</TableHead>

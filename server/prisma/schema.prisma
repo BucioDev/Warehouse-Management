@@ -82,25 +82,42 @@ model Instalments {
 }
 
 model SalesSummary {
-  id               String   @id @default(uuid())
-  totalValue       Float
+  id               String        @id @default(uuid())
+  period           SummaryPeriod
+  startDate        DateTime
+  endDate          DateTime
+  totalValue       Decimal
   changePercentage Float?
-  createdAt        DateTime @default(now())
+  createdAt        DateTime      @default(now())
+
+  @@unique([period, startDate, endDate])
 }
 
+
 model ExpensesSummary {
-  id               String @id @default(uuid())
-  totalExpense     Float
+  id           String              @id @default(uuid())
+  period       SummaryPeriod
+  startDate    DateTime
+  endDate      DateTime
+  totalExpense Decimal
   ExpenseByCategory ExpenseByCategory[]
 
   createdAt DateTime @default(now())
+
+  @@unique([period, startDate, endDate])
 }
 
 model ExpenseByCategory {
-  expenseByCategoryId String         @id @default(uuid())
+  expenseByCategoryId String          @id @default(uuid())
   expenseSummaryId    String
   category            String
-  amount              Float
-  date                DateTime
-  expenseSummary      ExpensesSummary @relation(fields: [expenseSummaryId], references: [id])
+  amount              Decimal
+  expenseSummary      ExpensesSummary @relation(fields: [expenseSummaryId], references: [id], onDelete: Cascade)
+
+  @@unique([expenseSummaryId, category])
+}
+
+enum SummaryPeriod {
+  WEEKLY
+  MONTHLY
 }

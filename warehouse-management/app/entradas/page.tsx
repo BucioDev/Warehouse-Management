@@ -24,7 +24,7 @@ const columns: GridColDef[] = [
       {
         field: "buyPrice",
         headerName: "Precio de Compra por unidad",
-        width: 150,
+        width: 250,
         type: "number",
         valueGetter: (value, row) => `$${row.buyPrice}`,
       },
@@ -80,7 +80,16 @@ return (
             columns={columns}
             getRowId={(row) => row.id}
             className="bg-white shadow rounded-lg border border-gray-200 mt-5 !text-gray-700"
-        />
+            sx={{
+                fontSize: "1rem",
+                "& .MuiDataGrid-columnHeaderTitle": {
+                    fontSize: "1rem",
+                    fontWeight: 600,
+                },
+                "& .MuiDataGrid-cell": {
+                    fontSize: "1rem",
+                },
+            }}/>
 
         <CreateEntryModalForm  isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

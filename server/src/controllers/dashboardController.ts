@@ -7,32 +7,41 @@ export const getDashboardMetricts = async (
     res: Response,
 ): Promise<void> => {
     try {
-        const saleSummary = await prisma.salesSummary.findMany({
-            take:5,
-            orderBy:{
-                createdAt:"desc",
-            },
-        });
-        const expenseSummary = await prisma.expensesSummary.findMany({
-            take:5,
-            orderBy:{
-                createdAt:"desc",
-            },
-        });
-        const expenseByCategorySummaryRaw = await prisma.expenseByCategory.findMany(
-            {
-              take: 5,
-              orderBy: {
-                date: "desc",
-              },
-            }
-          );
-          const expenseByCategorySummary = expenseByCategorySummaryRaw.map(
-            (item:any) => ({
-              ...item,
-              amount: item.amount.toString(),
-            })
-          );
+        const [weeklySales, monthlySales] = await Promise.all([
+            prisma.salesSummary.findMany({
+                where: { period: "WEEKLY" },
+                orderBy: { startDate: "desc" },
+                take: 5,
+            }),
+            prisma.salesSummary.findMany({
+                where: { period: "MONTHLY" },
+                orderBy: { startDate: "desc" },
+                take: 5,
+            }),
+        ]);
+        
+        const saleSummary = [...weeklySales, ...monthlySales];
+
+        const [weeklyExpenses, monthlyExpenses] = await Promise.all([
+    prisma.expensesSummary.findMany({
+        where: { period: "WEEKLY" },
+        orderBy: { startDate: "desc" },
+        take: 5,
+        include: {
+            ExpenseByCategory: true,
+        },
+    }),
+    prisma.expensesSummary.findMany({
+        where: { period: "MONTHLY" },
+        orderBy: { startDate: "desc" },
+        take: 5,
+        include: {
+            ExpenseByCategory: true,
+        },
+    }),
+]);
+
+const expenseSummary = [...weeklyExpenses, ...monthlyExpenses];
 
           const credits = await prisma.credits.findMany({
             where: {
@@ -56,7 +65,6 @@ export const getDashboardMetricts = async (
         res.json({
             saleSummary,
             expenseSummary,
-            expenseByCategorySummary,
             credits,
         });
     } catch (err) {

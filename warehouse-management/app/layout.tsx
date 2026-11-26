@@ -23,7 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground transition-colors">
+      <body className="min-h-full flex flex-col bg-[#EEF2F7] text-foreground transition-colors">
         <DashboardWrapper>{children}</DashboardWrapper>
         </body>
     </html>

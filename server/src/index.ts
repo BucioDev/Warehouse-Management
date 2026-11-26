@@ -14,6 +14,7 @@ import expensesRoutes from "./routes/expensesRoute.js"
 import salesRoutes from "./routes/salesRoutes.js"
 import creditRoutes from "./routes/creditsRoutes.js"
 import installmentsRoutes from "./routes/intsallamentsRoutes.js"
+import { startScheduledJobs } from "./jobs/index.js"
 /* Configurations */
 dotenv.config();
 const app = express();
@@ -43,4 +44,7 @@ const port = Number(process.env.PORT) || 3001;
 
 app.listen(port, "0.0.0.0", () => {
     console.log(`Server Running on port: ${port}`);
+
+     
+     startScheduledJobs();
 })

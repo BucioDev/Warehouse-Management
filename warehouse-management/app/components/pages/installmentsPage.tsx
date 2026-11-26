@@ -74,7 +74,7 @@ export default function InstallmentsPage({id}:installmentPageProps){
             credits?.map((credit) => (
             <div
               key={credit.id}
-              className="border shadow rounded-md p-4 max-w-full w-full mx-auto"
+              className="border shadow rounded-md bg-[#D8DBE2] p-4 max-w-full w-full mx-auto"
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-lg text-gray-900 font-semibold">
@@ -104,7 +104,16 @@ export default function InstallmentsPage({id}:installmentPageProps){
                 columns={columns}
                 getRowId={(row) => row.id}
                 className="bg-white shadow rounded-lg border border-gray-200 mt-5 !text-gray-700"
-            />
+                sx={{
+                  fontSize: "1rem",
+                  "& .MuiDataGrid-columnHeaderTitle": {
+                      fontSize: "1rem",
+                      fontWeight: 600,
+                  },
+                  "& .MuiDataGrid-cell": {
+                      fontSize: "1rem",
+                  },
+              }}/>
 
 
 

@@ -27,10 +27,10 @@ export default function GroupedExpenses(){
                 <div>Cargando... </div>
             ) : (
                 groupedExpenses?.map((expense, index) => (
-                    <div key={index} className="border shadow rounded-md p-4 max-w-full w-full mx-auto">
+                    <div key={index} className="border shadow bg-[#D8DBE2] rounded-md p-4 max-w-full w-full mx-auto">
                         <div className="flex flex-col items-center">
-                            <h3 className="text-lg text-gray-900 font-semibold">{expense.category}</h3>
-                            <div className="text-sm text-gray-600 mt-1">
+                            <h3 className="text-xl text-gray-900 font-bold">{expense.category}</h3>
+                            <div className="text-lg text-gray-800 font-medium mt-1">
                                 Cantidad total Gastada: {expense._sum.amount}
                             </div>
                         </div>
