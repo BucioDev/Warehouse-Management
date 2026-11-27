@@ -38,8 +38,8 @@ export default function CreateEntryModalForm({isOpen, onClose, onCreate}: Create
         onClose();
     }
     
-    const labelCssStyles = "block text-sm font-medium text-gray-700";
-    const inputCssStyles = "block w-full mb-2 p-2 border-gray-500 border-2 rounded-md"
+    const labelCssStyles = "block text-lg font-medium text-gray-700";
+    const inputCssStyles = "block text-lg w-full mb-2 p-2 border-gray-500 border-2 rounded-md"
     if(!isOpen) return null;
 
     return(
@@ -69,10 +69,10 @@ export default function CreateEntryModalForm({isOpen, onClose, onCreate}: Create
                     <input type="number" name="buyPrice" placeholder="" className={inputCssStyles}
                     onChange={handleChange} value={formData.buyPrice} required/>
     
-                    <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
+                    <button type="submit" className="mt-4 text-lg px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
                         Crear Entrada
                     </button>
-                    <button type="button" className="ml-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
+                    <button type="button" className="ml-2 text-lg px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
                     onClick={onClose}>
                         Cancelar
                     </button>

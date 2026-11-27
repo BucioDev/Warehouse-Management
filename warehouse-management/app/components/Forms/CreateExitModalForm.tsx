@@ -37,8 +37,8 @@ export default function CreateExitModalForm({isOpen, onClose, onCreate}: CreateE
         onClose();
     }
     
-    const labelCssStyles = "block text-sm font-medium text-gray-700";
-    const inputCssStyles = "block w-full mb-2 p-2 border-gray-500 border-2 rounded-md"
+    const labelCssStyles = "block text-lg font-medium text-gray-700";
+    const inputCssStyles = "block text-lg w-full mb-2 p-2 border-gray-500 border-2 rounded-md"
     if(!isOpen) return null;
 
     return(
@@ -62,10 +62,10 @@ export default function CreateExitModalForm({isOpen, onClose, onCreate}: CreateE
                     <input type="number" name="quantity" placeholder="" className={inputCssStyles}
                     onChange={handleChange} value={formData.quantity} required/>
     
-                    <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
+                    <button type="submit" className="mt-4 text-lg px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">
                         Crear Salida
                     </button>
-                    <button type="button" className="ml-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
+                    <button type="button" className="ml-2 text-lg px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
                     onClick={onClose}>
                         Cancelar
                     </button>
